@@ -11,7 +11,10 @@ export default function App() {
       <Stack.Navigator
         initialRouteName="Search"
         screenOptions= {{
-          title: 'BusinessSearch'
+          title: 'BusinessSearch',
+          cardStyle: {
+            backgroundColor: 'white'
+          }
         }}
       >
         <Stack.Screen 
