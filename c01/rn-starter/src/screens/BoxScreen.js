@@ -17,21 +17,20 @@ const styles = StyleSheet.create({
       borderWidth: 3,
       borderColor: 'black',
       height: 200,
+      alignItems: "center"
   },
   textOneStyle: {
       borderWidth: 3,
       borderColor: 'red',
-      flex: 4 // 4 + 4 + 2 = 10 => 40% 
   },
   textTwoStyle: {
       borderWidth: 3,
       borderColor: 'red',
-      flex: 4 // 4 + 4 + 2 = 10 => 40%
+      alignSelf: 'flex-end'
   },
   textThreeStyle: {
       borderWidth: 3,
       borderColor: 'red',
-      flex: 2 // 4 + 4 + 2 = 10 => 20%
   }
 });
 
