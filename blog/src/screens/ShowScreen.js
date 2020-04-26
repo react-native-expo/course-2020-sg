@@ -11,7 +11,7 @@ const ShowScreen = ({ route, navigation }) => {
     useLayoutEffect(() => {
         navigation.setOptions({
             headerRight: () => (
-                <TouchableOpacity onPress={() => navigation.navigate('Edit')}>
+                <TouchableOpacity onPress={() => navigation.navigate('Edit', { id: id})}>
                     <EvilIcons name='pencil' size={35} />
                 </TouchableOpacity>
             )
