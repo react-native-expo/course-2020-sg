@@ -1,7 +1,4 @@
-import React, { useReducer } from 'react';
 import createDataContext from './createDataContext';
-
-const  BlogContext = React.createContext();
 
 const blogReducer = (state, action) => {
 
@@ -13,7 +10,8 @@ const blogReducer = (state, action) => {
                 ...state, 
                 {
                     id: Math.floor(Math.random() * 99999),
-                    title: `Blog Post #${state.length + 1}`
+                    title: payload.title,
+                    content: payload.content
                 }
             ];
         case 'delete_blogpost':
@@ -24,8 +22,8 @@ const blogReducer = (state, action) => {
 };
 
 const addBlogPost = (dispatch) => {
-    return () => {
-        dispatch({ type: 'add_blogpost' });
+    return (title, content) => {
+        dispatch({ type: 'add_blogpost', payload: { title, content} });
     }
 };
 
