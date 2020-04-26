@@ -1,10 +1,19 @@
-import React, { useContext, useLayoutEffect } from 'react';
+import React, { useContext, useLayoutEffect, useEffect } from 'react';
 import { StyleSheet, Text, View, FlatList, Button, TouchableOpacity } from 'react-native';
 import { Context as BlogContext } from '../context/BlogContext';
 import { Feather } from '@expo/vector-icons';
  
 const IndexScreen = ({ navigation }) => {
-    const { state, deleteBlogPost } = useContext(BlogContext);
+    const { state, deleteBlogPost, getBlogPost } = useContext(BlogContext);
+
+    useEffect(() => {
+        getBlogPost();
+        const unsubscribe  = navigation.addListener('focus', () => {
+            getBlogPost();
+        })
+
+        return unsubscribe;
+    }, []);
 
     useLayoutEffect(() => {
         navigation.setOptions({

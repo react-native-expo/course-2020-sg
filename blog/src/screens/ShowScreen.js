@@ -21,6 +21,7 @@ const ShowScreen = ({ route, navigation }) => {
     return (
         <View>
             <Text>{blogPost.title}</Text>
+            <Text>{blogPost.content}</Text>
         </View>
     )
 }
