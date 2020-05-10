@@ -1,10 +1,13 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
+import { useAuth } from '../contexts/AuthContext';
 
 const AccountScreen = () => {
+    const { signOut } = useAuth();
     return (
         <View>
             <Text>AccountScreen</Text>
+            <Button title='Signout' onPress={() => signOut && signOut()} />
         </View>
     )
 };

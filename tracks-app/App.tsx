@@ -1,23 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator, HeaderTitle } from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { StyleSheet, Text, View } from 'react-native';
 import AccountScreen from './src/screens/AccountScreen';
 import SigninScreen from './src/screens/SigninScreen';
 import SignupScreen from './src/screens/SignupScreen';
 import TrackCreateScreen from './src/screens/TrackCreateScreen';
 import TrackDetailScreen from './src/screens/TrackDetailScreen';
 import TrackListScreen from './src/screens/TrackListScreen';
+import AuthProvider from './src/contexts/AuthContext';
+import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
+import { navigationRef } from './src/RootNavigation';
 
 const loginFlow = () => {
   const Stack = createStackNavigator();
   return (
     <Stack.Navigator
-      screenOptions={{
-        headerTitle: ''
-      }}
+      headerMode="none"
     >
       <Stack.Screen name="Signup" component={SignupScreen} />
       <Stack.Screen name="Signin" component={SigninScreen} />
@@ -55,12 +54,16 @@ const mainFlow = () => {
 const RootStack = createStackNavigator();
 
 export default function App() {
+
   return (
-    <NavigationContainer>
-      <RootStack.Navigator headerMode="none">
-        <RootStack.Screen name="loginFlow" component={loginFlow} />
-        <RootStack.Screen name="mainFlow" component={mainFlow} />
-      </RootStack.Navigator>  
-    </NavigationContainer>
+    <AuthProvider>
+      <NavigationContainer ref={navigationRef}>
+        <RootStack.Navigator headerMode="none">
+          <RootStack.Screen name="ResolveAuth" component={ResolveAuthScreen} />
+          <RootStack.Screen name="loginFlow" component={loginFlow} />
+          <RootStack.Screen name="mainFlow" component={mainFlow} />
+        </RootStack.Navigator>  
+      </NavigationContainer>
+    </AuthProvider>
   )
 }
