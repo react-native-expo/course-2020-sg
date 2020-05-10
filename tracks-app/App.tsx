@@ -11,6 +11,7 @@ import TrackListScreen from './src/screens/TrackListScreen';
 import AuthProvider from './src/contexts/AuthContext';
 import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
 import { navigationRef } from './src/RootNavigation';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 const loginFlow = () => {
   const Stack = createStackNavigator();
@@ -57,13 +58,15 @@ export default function App() {
 
   return (
     <AuthProvider>
-      <NavigationContainer ref={navigationRef}>
-        <RootStack.Navigator headerMode="none">
-          <RootStack.Screen name="ResolveAuth" component={ResolveAuthScreen} />
-          <RootStack.Screen name="loginFlow" component={loginFlow} />
-          <RootStack.Screen name="mainFlow" component={mainFlow} />
-        </RootStack.Navigator>  
-      </NavigationContainer>
+      <SafeAreaProvider>
+        <NavigationContainer ref={navigationRef}>
+          <RootStack.Navigator headerMode="none">
+            <RootStack.Screen name="ResolveAuth" component={ResolveAuthScreen} />
+            <RootStack.Screen name="loginFlow" component={loginFlow} />
+            <RootStack.Screen name="mainFlow" component={mainFlow} />
+          </RootStack.Navigator>  
+        </NavigationContainer>
+      </SafeAreaProvider>
     </AuthProvider>
   )
 }

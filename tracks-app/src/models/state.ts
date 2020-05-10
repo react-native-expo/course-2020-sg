@@ -1,5 +1,5 @@
 export interface AuthenticationState {
-    token: string | null
+    token: string | null;
     errorMessage: string | null;
   }
   

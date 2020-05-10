@@ -16,7 +16,7 @@ export enum AuthencationActionType {
 
 export const initialState: AuthenticationState = {
     token: '',
-    errorMessage: ''
+    errorMessage: '',
 }
 
 export type AuthenticationPayload = {
